@@ -5,7 +5,7 @@ export declare class UsersResolver {
     private readonly usersService;
     constructor(usersService: UsersService);
     createUser(createUserInput: CreateUserInput): string;
-    findAll(): Promise<import("./entities/user.schema").UserDocument[]>;
+    findAll(): Promise<import("./entities/user.entity").UserDocument[]>;
     findOne(id: number): string;
     updateUser(updateUserInput: UpdateUserInput): string;
     removeUser(id: number): string;

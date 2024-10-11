@@ -12,7 +12,7 @@ const users_service_1 = require("./users.service");
 const users_resolver_1 = require("./users.resolver");
 const users_repository_1 = require("./users.repository");
 const database_module_1 = require("../common/database/database.module");
-const user_schema_1 = require("./entities/user.schema");
+const user_entity_1 = require("./entities/user.entity");
 let UsersModule = class UsersModule {
 };
 exports.UsersModule = UsersModule;
@@ -21,8 +21,8 @@ exports.UsersModule = UsersModule = __decorate([
         imports: [
             database_module_1.DatabaseModule.forFeature([
                 {
-                    name: user_schema_1.UserDocument.name,
-                    schema: user_schema_1.UserSchema,
+                    name: user_entity_1.UserDocument.name,
+                    schema: user_entity_1.UserSchema,
                 },
             ]),
         ],

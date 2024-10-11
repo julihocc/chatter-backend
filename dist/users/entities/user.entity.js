@@ -9,16 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
-const graphql_1 = require("@nestjs/graphql");
-let User = class User {
+exports.UserSchema = exports.UserDocument = void 0;
+const mongoose_1 = require("@nestjs/mongoose");
+const abstract_schema_1 = require("../../common/database/abstract.schema");
+let UserDocument = class UserDocument extends abstract_schema_1.AbstractDocument {
 };
-exports.User = User;
+exports.UserDocument = UserDocument;
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { description: 'Example field (placeholder)' }),
-    __metadata("design:type", Number)
-], User.prototype, "exampleField", void 0);
-exports.User = User = __decorate([
-    (0, graphql_1.ObjectType)()
-], User);
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], UserDocument.prototype, "email", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], UserDocument.prototype, "password", void 0);
+exports.UserDocument = UserDocument = __decorate([
+    (0, mongoose_1.Schema)({ versionKey: false })
+], UserDocument);
+exports.UserSchema = mongoose_1.SchemaFactory.createForClass(UserDocument);
 //# sourceMappingURL=user.entity.js.map
