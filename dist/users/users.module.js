@@ -21,7 +21,7 @@ exports.UsersModule = UsersModule = __decorate([
         imports: [
             database_module_1.DatabaseModule.forFeature([
                 {
-                    name: user_entity_1.UserDocument.name,
+                    name: user_entity_1.User.name,
                     schema: user_entity_1.UserSchema,
                 },
             ]),
