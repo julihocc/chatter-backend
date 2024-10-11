@@ -16,7 +16,7 @@ export class UsersService {
   }
 
   private async hashPassword(password: string) {
-    return await bcrypt.hash(password, 10);
+    return bcrypt.hash(password, 10);
   }
 
   async findAll() {
