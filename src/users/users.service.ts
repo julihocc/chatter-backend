@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { UsersRepository } from './users.repository';
@@ -6,8 +7,12 @@ import { UsersRepository } from './users.repository';
 @Injectable()
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
-  create(createUserInput: CreateUserInput) {
-    return 'This action adds a new user';
+
+  async create(createUserInput: CreateUserInput) {
+    return this.usersRepository.create({
+      ...createUserInput,
+      password: await bcrypt.hash(createUserInput.password, 10),
+    });
   }
 
   async findAll() {
