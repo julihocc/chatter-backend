@@ -39,7 +39,8 @@ export class UsersResolver {
   }
 
   @Mutation(() => User)
-  removeUser(@Args('_id') _id: string) {
-    return this.usersService.remove(_id);
+  @UseGuards(GqlAuthGuard)
+  removeUser(@CurrentUser() user: TokenPayload) {
+    return this.usersService.remove(user._id);
   }
 }
