@@ -5,6 +5,8 @@ import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
 import { UseGuards } from '@nestjs/common';
+import { CurrentUser } from 'src/auth/current-user.decorator';
+import { TokenPayload } from 'src/auth/token-payload.interface';
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -28,8 +30,12 @@ export class UsersResolver {
   }
 
   @Mutation(() => User)
-  updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
-    return this.usersService.update(updateUserInput._id, updateUserInput);
+  @UseGuards(GqlAuthGuard)
+  updateUser(
+    @Args('updateUserInput') updateUserInput: UpdateUserInput,
+    @CurrentUser() user: TokenPayload,
+  ) {
+    return this.usersService.update(user._id, updateUserInput);
   }
 
   @Mutation(() => User)
