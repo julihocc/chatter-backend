@@ -10,7 +10,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
 
   const corsOptions: CorsOptions = {
-    origin: 'http://127.0.0.1:5173', // Update this to match your frontend's origin
+    origin: 'http://localhost:5173', // Update this to match your frontend's origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept',
     credentials: true,
